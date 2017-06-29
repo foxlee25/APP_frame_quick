@@ -1,1 +1,1 @@
-include ':app', ':cwidgetutil'
+include ':app', ':cwidgetutil', ':backend'
