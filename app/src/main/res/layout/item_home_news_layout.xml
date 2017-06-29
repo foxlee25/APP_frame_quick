@@ -12,7 +12,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp">
 
-        <com.cniao5.app36kr_cnk.widget.RoundAngleImageView
+        <com.foxlee.quick_app.widget.RoundAngleImageView
             android:id="@+id/item_news_img_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"

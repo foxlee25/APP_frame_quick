@@ -2,6 +2,15 @@
 <items version="2" >
 
     <item
+        is-multidex="false"
+        jar="/Applications/Android Studio.app/Contents/gradle/m2repository/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/gson-2.2.4_d0ce76b63ce905fbab3c5d385c8e1b8692010f19.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="/Users/jili/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.6.0/98476622f10715998eacf9240d6b479f12c66143/okio-1.6.0.jar"
         jumboMode="true"
@@ -38,6 +47,15 @@
         <dex dex="/Users/jili/Documents/GitRepo/cniao5-news/app/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_f88faaed1c38050c45b524c77188376f10c1eb6a/classes.dex" />
     </item>
     <item
+        is-multidex="false"
+        jar="/Users/jili/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/picasso-2.5.2_f88faaed1c38050c45b524c77188376f10c1eb6a.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="/Users/jili/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.6.0/212387a39088ecd3daff8e3bfc3bdc4123e33c67/okhttp-2.6.0.jar"
         jumboMode="true"
@@ -56,6 +74,33 @@
         <dex dex="/Users/jili/Documents/GitRepo/cniao5-news/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b307dd96df83091f3045ef58849520a16c1bc535/classes.dex" />
     </item>
     <item
+        is-multidex="false"
+        jar="/Users/jili/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.6.0/212387a39088ecd3daff8e3bfc3bdc4123e33c67/okhttp-2.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="212387a39088ecd3daff8e3bfc3bdc4123e33c67">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/okhttp-2.6.0_1b73db262dd339008c0662da192568d1da13047d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/jili/.android/build-cache/3034af2404ab025e489717b4626d75815bfa03ab/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bc599eb9531da9d18bc58ec4eb0b1a1d895f6839">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/classes_b307dd96df83091f3045ef58849520a16c1bc535.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/jili/.android/build-cache/90b3da00c118aecd49db16a20820b4f0f22b9bbb/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/classes_8e39aff7fe41143e2d06e594c0492f5134351450.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="/Users/jili/.android/build-cache/793b323bb1ff7e8ef2cb4e63af0c06ab324bca11/output/jars/classes.jar"
         jumboMode="true"
@@ -72,6 +117,24 @@
         revision="25.0.2"
         sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
         <dex dex="/Users/jili/Documents/GitRepo/cniao5-news/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4583a3689802dd4c2907c568d327afdd4817d943/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/jili/.android/build-cache/d5049490b36e9ba5608fb4419ee8bb226ebfd3b5/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/classes_4583a3689802dd4c2907c568d327afdd4817d943.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/jili/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.6.0/98476622f10715998eacf9240d6b479f12c66143/okio-1.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/okio-1.6.0_ae8d2549e2b07a1a6783c2fcf930c7a558da1aac.jar" />
     </item>
     <item
         is-multidex="true"
@@ -110,6 +173,33 @@
         <dex dex="/Users/jili/Documents/GitRepo/cniao5-news/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_78da1927f1eae432431b9c1d8862ff37dc233afb/classes.dex" />
     </item>
     <item
+        is-multidex="false"
+        jar="/Users/jili/.android/build-cache/793b323bb1ff7e8ef2cb4e63af0c06ab324bca11/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/classes_d33f95f9c87b747734becf27ee55319f72df1ff5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/libs/nineoldandroids-2.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a43cf9e271b5bc564e880a0a4be63ab9c69c97f8">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/nineoldandroids-2.4.0_b32a37d995bd6d7a571e74c6b51d613329f5aa6f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/jili/android-sdks/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_faa68cc85a07a7eb398e6a8befaf35d868593b33.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="/Users/jili/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
         jumboMode="true"
@@ -126,6 +216,15 @@
         revision="25.0.2"
         sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
         <dex dex="/Users/jili/Documents/GitRepo/cniao5-news/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_faa68cc85a07a7eb398e6a8befaf35d868593b33/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/cwidgetutil/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f3144433383aebd98ee69bfd63291ab4e625828b">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/classes_4fecd51870751de2141943ae06c98501cc177e21.jar" />
     </item>
     <item
         is-multidex="true"
@@ -173,6 +272,15 @@
         <dex dex="/Users/jili/Documents/GitRepo/cniao5-news/app/build/intermediates/transforms/dex/debug/folders/1000/2/nineoldandroids-2.4.0_55341e5b95044c544817b5483ec312df08398dac/classes.dex" />
     </item>
     <item
+        is-multidex="false"
+        jar="/Users/jili/.android/build-cache/9ae4b394dd4534bcfae72f906c297dd384264fe8/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/classes_aa2b607db01bc63765e91c3746f33ce3b12ad4ab.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="/Users/jili/.android/build-cache/90b3da00c118aecd49db16a20820b4f0f22b9bbb/output/jars/libs/internal_impl-23.4.0.jar"
         jumboMode="true"
@@ -189,6 +297,24 @@
         revision="25.0.0"
         sha1="b867f6dced09f7153039f7d345da186f298f8a6d">
         <dex dex="/Users/jili/Documents/GitRepo/cniao5-news/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_78da1927f1eae432431b9c1d8862ff37dc233afb/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/jili/.android/build-cache/ab065af8d306c389dcd00fd38fd68dc3bdae6a05/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1aa5b025efe97f5006f5be16d6ca67c6c3c0c0d8">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/classes_1dbb10fcb8791c6e067fecd2219355f49b52f931.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/libs/jsoup-1.8.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3a86e137575e4a45f5a9eec407f8135512e823a2">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/jsoup-1.8.3_e4faa7a67d359ee80083ac8444de066f1dc069fe.jar" />
     </item>
     <item
         is-multidex="true"
@@ -225,6 +351,24 @@
         revision="25.0.2"
         sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
         <dex dex="/Users/jili/Documents/GitRepo/cniao5-news/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5e27c75086cadf58de58666fa93efc92a388709b/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/jili/.android/build-cache/90b3da00c118aecd49db16a20820b4f0f22b9bbb/output/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/internal_impl-23.4.0_f3dd019f5fa773681a2121c3e3f76761411a105b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/jili/.android/build-cache/0bbffc37114c60e2e6cc4b8ce7cdef60e28fb764/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
+        <dex dex="/Users/jili/Documents/GitRepo/APP_quick/APP_frame_quick/app/build/intermediates/pre-dexed/debug/classes_5e27c75086cadf58de58666fa93efc92a388709b.jar" />
     </item>
     <item
         is-multidex="true"

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/APP_frame_quick.iml" filepath="$PROJECT_DIR$/APP_frame_quick.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cniao5-news.iml" filepath="$PROJECT_DIR$/cniao5-news.iml" />
       <module fileurl="file://$PROJECT_DIR$/cwidgetutil/cwidgetutil.iml" filepath="$PROJECT_DIR$/cwidgetutil/cwidgetutil.iml" />
     </modules>
   </component>
