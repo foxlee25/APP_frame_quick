@@ -1,5 +1,12 @@
 package com.foxlee.quick_app.fragment;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,9 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cniao5.adapter.helper.BaseAdapterHelper;
@@ -34,72 +43,148 @@ import java.util.List;
  * ProjectName：
  */
 public class HomeFragment extends BaseFragment implements DefineView {
+
     private View mView;
-    private static final String KEY="EXTRA";
+
+    private static final String KEY = "EXTRA";
+
     private CategoriesBean categoriesBean;
+
     private PullToRefreshListView home_listview;
+
     private List<HomeNewsBean> homeNewsBeans;
+
     private List<AdHeadBean> adHeadBeans;
+
     private QuickAdapter<HomeNewsBean> quickAdapter;
+
     private String[] masks;
+
     private int[] mask_colors;
-    private FrameLayout home_framelayout;
-    private LinearLayout loading,empty,error;
+
+    //    private FrameLayout home_framelayout;
+    private RelativeLayout home_framelayout;
+
+    private LinearLayout loading, empty, error;
+
     private View headView;
+
     private LayoutInflater mInflater;
+
     private AutoGallery headline_image_gallery;
+
     private FlowIndicator headline_circle_indicator;
-    private int gallerySelectedPositon=0;//Gallery索引
+
+    private int gallerySelectedPositon = 0;//Gallery索引
+
     private int circleSelectedPosition = 0; // 默认指示器的圆圈的位置为第一
 
-    public static HomeFragment newInstance(CategoriesBean extra){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(KEY,extra);
-        HomeFragment fragment=new HomeFragment();
+    private FirebaseDatabase mFirebaseDatabase;
+
+    private DatabaseReference mReference;
+
+    private TextView mTextView;
+    private Button mButton;
+
+
+
+    public static HomeFragment newInstance(CategoriesBean extra) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(KEY, extra);
+        HomeFragment fragment = new HomeFragment();
         fragment.setArguments(bundle);
-        return  fragment;
+        return fragment;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle=getArguments();
-        if(bundle!=null) {
-            categoriesBean=(CategoriesBean)bundle.getSerializable(KEY);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            categoriesBean = (CategoriesBean) bundle.getSerializable(KEY);
         }
     }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if(mView==null){
-            mView=inflater.inflate(R.layout.home_fragment_layout,container,false);
-            mInflater=LayoutInflater.from(getActivity());
-            headView=mInflater.inflate(R.layout.gallery_indicator_layout,null);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        if (mView == null) {
+            mView = inflater.inflate(R.layout.home_fragment_layout, container, false);
+            mInflater = LayoutInflater.from(getActivity());
+            headView = mInflater.inflate(R.layout.gallery_indicator_layout, null);
             initView();
 //            initValidata();
 //            initListener();
+            initFBData();
         }
         return mView;
     }
 
+    private void initFBData() {
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+//        mReference = FirebaseDatabase.getInstance().getReference();
+//        mReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://quickapp-3dc55.firebaseio.com/name");
+//        mReference.child("name")
+        mReference  = mFirebaseDatabase.getReference("message");
+        mReference.setValue("this test message");
+
+
+        mReference.addValueEventListener(new ValueEventListener() {
+
+
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        String str2 = dataSnapshot.getValue().toString();
+                        mTextView.setText(str2);
+
+                        Log.d("ttt1", str2);
+                        Log.d("ttt2", dataSnapshot.getValue().toString());
+                        Log.d("ttt root ", mReference.getRoot().toString());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+        mButton = (Button) mView.findViewById(R.id.btn);
+        mButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                mReference.child("message").push().setValue("this new vaule");
+            }
+        });
+
+    }
+
     @Override
     public void initView() {
-        home_listview=(PullToRefreshListView)mView.findViewById(R.id.home_listview);
+        home_listview = (PullToRefreshListView) mView.findViewById(R.id.home_listview);
         home_listview.addHeaderView(headView);
-        home_framelayout=(FrameLayout)mView.findViewById(R.id.home_framelayout);
-        loading=(LinearLayout)mView.findViewById(R.id.loading);
-        empty=(LinearLayout)mView.findViewById(R.id.empty);
-        error=(LinearLayout)mView.findViewById(R.id.error);
+        home_framelayout = (RelativeLayout) mView.findViewById(R.id.home_framelayout);
+        loading = (LinearLayout) mView.findViewById(R.id.loading);
+        empty = (LinearLayout) mView.findViewById(R.id.empty);
+        error = (LinearLayout) mView.findViewById(R.id.error);
+
+        //txt
+        mTextView = (TextView) mView.findViewById(R.id.mytext);
 
         //获取AutoGallery和FlowIndicator控件
-        headline_image_gallery=(AutoGallery)headView.findViewById(R.id.headline_image_gallery);
-        headline_circle_indicator=(FlowIndicator)headView.findViewById(R.id.headline_circle_indicator);
+        headline_image_gallery = (AutoGallery) headView.findViewById(R.id.headline_image_gallery);
+        headline_circle_indicator = (FlowIndicator) headView
+                .findViewById(R.id.headline_circle_indicator);
     }
+
     @Override
     public void initValidata() {
-        masks=new String[]{"1","2","3","4","5","6","7","8","9","10"};
-        mask_colors=new int[]{R.color.mask_tags_1,R.color.mask_tags_2,
-                R.color.mask_tags_3,R.color.mask_tags_4,R.color.mask_tags_5,
-                R.color.mask_tags_6,R.color.mask_tags_7,R.color.mask_tags_8,
-                R.color.mask_tags_9,R.color.mask_tags_10,R.color.mask_tags_11,R.color.mask_tags_12};
+        masks = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        mask_colors = new int[]{R.color.mask_tags_1, R.color.mask_tags_2,
+                R.color.mask_tags_3, R.color.mask_tags_4, R.color.mask_tags_5,
+                R.color.mask_tags_6, R.color.mask_tags_7, R.color.mask_tags_8,
+                R.color.mask_tags_9, R.color.mask_tags_10, R.color.mask_tags_11,
+                R.color.mask_tags_12};
 
         home_listview.setVisibility(View.GONE);
         home_framelayout.setVisibility(View.VISIBLE);
@@ -110,21 +195,22 @@ public class HomeFragment extends BaseFragment implements DefineView {
         OkhttpManager.getAsync(categoriesBean.getHref(), new OkhttpManager.DataCallBack() {
             @Override
             public void requestFailure(Request request, Exception e) {
-                Log.d("test","loadding failed...");
+                Log.d("test", "loadding failed...");
             }
+
             @Override
             public void requestSuccess(String result) {
 //                Document document=Jsoup.parse(result, Config.CRAWLER_URL);
 //                adHeadBeans=new HeadDataManager().getHeadBeans(document);
 //                homeNewsBeans=new HomeNewsDataManager().getHomeNewsBeans(document);
-                if(adHeadBeans!=null&&homeNewsBeans!=null){
+                if (adHeadBeans != null && homeNewsBeans != null) {
                     home_listview.setVisibility(View.VISIBLE);
                     home_framelayout.setVisibility(View.GONE);
                     loading.setVisibility(View.GONE);
                     empty.setVisibility(View.GONE);
                     error.setVisibility(View.GONE);
                     bindData();
-                }else{
+                } else {
                     home_listview.setVisibility(View.GONE);
                     home_framelayout.setVisibility(View.VISIBLE);
                     loading.setVisibility(View.GONE);
@@ -143,13 +229,13 @@ public class HomeFragment extends BaseFragment implements DefineView {
 
     @Override
     public void bindData() {
-        int topSize=adHeadBeans.size();
+        int topSize = adHeadBeans.size();
         //设置指示器
         headline_circle_indicator.setCount(topSize);
         headline_circle_indicator.setSeletion(circleSelectedPosition);
         //设置画廊Gallery
         headline_image_gallery.setLength(topSize);
-        gallerySelectedPositon=topSize*50+circleSelectedPosition;
+        gallerySelectedPositon = topSize * 50 + circleSelectedPosition;
         headline_image_gallery.setSelection(gallerySelectedPositon);
         headline_image_gallery.setDelayMillis(4000);
         headline_image_gallery.start();
@@ -157,8 +243,8 @@ public class HomeFragment extends BaseFragment implements DefineView {
         headline_image_gallery.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                circleSelectedPosition=position;
-                gallerySelectedPositon=circleSelectedPosition%adHeadBeans.size();
+                circleSelectedPosition = position;
+                gallerySelectedPositon = circleSelectedPosition % adHeadBeans.size();
                 headline_circle_indicator.setSeletion(gallerySelectedPositon);
             }
 
@@ -167,26 +253,28 @@ public class HomeFragment extends BaseFragment implements DefineView {
 
             }
         });
-        quickAdapter=new QuickAdapter<HomeNewsBean>(getActivity(),R.layout.item_home_news_layout,homeNewsBeans) {
+        quickAdapter = new QuickAdapter<HomeNewsBean>(getActivity(), R.layout.item_home_news_layout,
+                homeNewsBeans) {
             @Override
             protected void convert(BaseAdapterHelper helper, HomeNewsBean item) {
-                String mask=item.getMask();
-                helper.setText(R.id.item_news_tv_name,item.getAuthorBean().getName())
-                      .setText(R.id.item_news_tv_time,item.getDatetext())
-                      .setText(R.id.item_news_tv_type,mask)
-                      .setText(R.id.item_news_tv_title,item.getTitle())
-                        .setImageUrl(R.id.item_news_tv_img,item.getImgurl())
-                .setImageUrl(R.id.item_news_img_icon,item.getAuthorBean().getAvatar());
-                int index=0;
-                for(int i=0;i<masks.length;i++){
-                    if(masks[i].equals(mask)){
-                        index=i;
+                String mask = item.getMask();
+                helper.setText(R.id.item_news_tv_name, item.getAuthorBean().getName())
+                        .setText(R.id.item_news_tv_time, item.getDatetext())
+                        .setText(R.id.item_news_tv_type, mask)
+                        .setText(R.id.item_news_tv_title, item.getTitle())
+                        .setImageUrl(R.id.item_news_tv_img, item.getImgurl())
+                        .setImageUrl(R.id.item_news_img_icon, item.getAuthorBean().getAvatar());
+                int index = 0;
+                for (int i = 0; i < masks.length; i++) {
+                    if (masks[i].equals(mask)) {
+                        index = i;
                         break;
                     }
                 }
-                TextView tv_type=(TextView)helper.getView(R.id.item_news_tv_type);
+                TextView tv_type = (TextView) helper.getView(R.id.item_news_tv_type);
                 tv_type.setTextColor(getActivity().getResources().getColor(mask_colors[index]));
-                helper.getView(R.id.item_news_tv_arrow).setBackgroundColor(getActivity().getResources().getColor(mask_colors[index]));
+                helper.getView(R.id.item_news_tv_arrow).setBackgroundColor(
+                        getActivity().getResources().getColor(mask_colors[index]));
             }
         };
         home_listview.setAdapter(quickAdapter);
@@ -195,41 +283,45 @@ public class HomeFragment extends BaseFragment implements DefineView {
     /**
      * AutoGallery的自定义Adapter
      */
-   class GalleryAdapter extends BaseAdapter{
+    class GalleryAdapter extends BaseAdapter {
 
-       @Override
-       public int getCount() {
-           return Integer.MAX_VALUE;
-       }
+        @Override
+        public int getCount() {
+            return Integer.MAX_VALUE;
+        }
 
-       @Override
-       public Object getItem(int position) {
-           return adHeadBeans.get(position);
-       }
+        @Override
+        public Object getItem(int position) {
+            return adHeadBeans.get(position);
+        }
 
-       @Override
-       public long getItemId(int position) {
-           return position;
-       }
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
 
-       @Override
-       public View getView(int position, View convertView, ViewGroup parent) {
-           Holder _Holder=null;
-           if(convertView==null){
-               _Holder=new Holder();
-               convertView=mInflater.inflate(R.layout.item_gallery_layout,null);
-               _Holder.item_head_gallery_img=(ImageView)convertView.findViewById(R.id.item_head_gallery_img);
-               convertView.setTag(_Holder);
-           }else {
-               _Holder=(Holder)convertView.getTag();
-           }
-           //显示数据
-           Picasso.with(mView.getContext()).load(adHeadBeans.get(position%adHeadBeans.size()).getImgurl()).into(_Holder.item_head_gallery_img);
-           return convertView;
-       }
-   }
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            Holder _Holder = null;
+            if (convertView == null) {
+                _Holder = new Holder();
+                convertView = mInflater.inflate(R.layout.item_gallery_layout, null);
+                _Holder.item_head_gallery_img = (ImageView) convertView
+                        .findViewById(R.id.item_head_gallery_img);
+                convertView.setTag(_Holder);
+            } else {
+                _Holder = (Holder) convertView.getTag();
+            }
+            //显示数据
+            Picasso.with(mView.getContext())
+                    .load(adHeadBeans.get(position % adHeadBeans.size()).getImgurl())
+                    .into(_Holder.item_head_gallery_img);
+            return convertView;
+        }
+    }
 
-   private static class  Holder{
+    private static class Holder {
+
         ImageView item_head_gallery_img;
     }
 }
